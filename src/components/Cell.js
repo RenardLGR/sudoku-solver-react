@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 
-function Cell({cell}) {
+function Cell({cell, updateCell}) {
     const rowIndx = cell.rowIndx
     const cellIndx = cell.cellIndx
 
@@ -9,7 +9,7 @@ function Cell({cell}) {
 
     function handleChange(event){
         updateCellState(event.target.value)
-        //TODO : update parent state
+        updateCell(rowIndx, cellIndx, event.target.value)
     }
 
 
