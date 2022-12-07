@@ -15,7 +15,8 @@ function Cell({cell, updateCell}) {
 
     return (
         <td className="cell">
-            <input type="text" maxLength="1" value={cellState} onChange={handleChange} />
+            {/* <input type="text" maxLength="1" value={cellState} onChange={handleChange} /> */}
+            <input type="text" maxLength="1" value={cell.cellValue} onChange={handleChange} />
         </td>
     )
 }
