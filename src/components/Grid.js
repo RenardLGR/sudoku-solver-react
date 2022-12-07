@@ -3,7 +3,7 @@ import Row from "./Row"
 
 const Grid = ({gameState, updateCell}) => {
 
-    //We are kepping track of the unsolved grid and the solved grid (which will be calculated when the user wants it, as he simply enters values, unsolved one is updated)
+    //We are keeping track of the unsolved grid and the solved grid (which will be calculated when the user wants it, as he simply enters values,: only unsolved one is updated)
 
 
     return (

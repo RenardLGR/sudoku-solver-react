@@ -38,6 +38,7 @@ function Game(){
         gridStateCpy.unsolvedGrid[rowIndx][colIndx] = Number(newVal)
         //gridStateCpy.solvedGrid[rowIndx][colIndx] = Number(newVal)
         updateGridState(gridStateCpy)
+        console.log(gameState);
     }
 
     function solveGrid(){
@@ -46,11 +47,14 @@ function Game(){
         let unsolvedGrid = gridStateCpy.unsolvedGrid.slice().map(subarr => subarr.slice())
         let solvedGrid = solveSudoku(unsolvedGrid)
 
-        gridStateCpy.solvedGrid = solvedGrid
+        gridStateCpy.solvedGrid = solvedGrid.slice().map(subarr => subarr.slice())
+        //gridStateCpy.unsolvedGrid = solvedGrid.slice().map(subarr => subarr.slice())
 
         console.log(gridStateCpy);
 
-        updateGridState({...gridStateCpy})
+        updateGridState(gridStateCpy)
+        console.log(gameState);
+        //gameState is not updated??????????
         
     }
 
