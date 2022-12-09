@@ -1,14 +1,14 @@
 // import { useState } from 'react'
 
-const Buttons = ({isSolHidden, solveGrid, logState}) => {
+const Buttons = ({isSolHidden, solveGrid, hideGrid, resetGrid}) => {
 
 
 
   return (
     <div>
-        <button onClick={()=>logState()}>Reset</button>
+        <button onClick={resetGrid}>Reset</button>
         {
-            isSolHidden ? <button onClick={solveGrid}>Solve</button> : <button>Hide</button>
+            isSolHidden ? <button onClick={solveGrid}>Solve</button> : <button onClick={hideGrid}>Hide</button>
         }
     </div>
   )

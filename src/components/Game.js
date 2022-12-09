@@ -35,10 +35,17 @@ function Game(){
 
     function updateCell(rowIndx, colIndx, newVal){ //this is called when the user enters/changes a number
         let gridStateCpy = {...gameState}
-        gridStateCpy.unsolvedGrid[rowIndx][colIndx] = Number(newVal)
-        //gridStateCpy.solvedGrid[rowIndx][colIndx] = Number(newVal)
+
+        if(newVal === ''){ //If backspace was pressed
+            gridStateCpy.unsolvedGrid[rowIndx][colIndx] = undefined
+        }else if([0,1,2,3,4,5,6,7,8,9].includes(Number(newVal))){ //if a number was pressed
+            gridStateCpy.unsolvedGrid[rowIndx][colIndx] = Number(newVal)
+        }else{ //every other char
+            gridStateCpy.unsolvedGrid[rowIndx][colIndx] = 0
+        }
+
         updateGridState(gridStateCpy)
-        console.log(gameState);
+        // console.log(gameState);
     }
 
     function solveGrid(){
@@ -50,23 +57,36 @@ function Game(){
         gridStateCpy.solvedGrid = solvedGrid.slice().map(subarr => subarr.slice())
         //gridStateCpy.unsolvedGrid = solvedGrid.slice().map(subarr => subarr.slice())
 
-        console.log(gridStateCpy);
-
-        updateGridState(gridStateCpy)
-        console.log(gameState);
-        //gameState is not updated??????????
-        
+        updateGridState(gridStateCpy)  
     }
 
-    function logState(){
+    function hideGrid(){
         let gridStateCpy = {...gameState}
-        console.log(gridStateCpy);
+        gridStateCpy.isSolHidden = true
+        updateGridState(gridStateCpy)
+    }
+
+    function resetGrid(){
+        let gridStateCpy = {...gameState}
+        gridStateCpy.isSolHidden = true
+
+        let unsolvedGrid = Array(9).fill([]).map(subar => [0,0,0,0,0,0,0,0,0])
+        gridStateCpy.unsolvedGrid = unsolvedGrid.slice().map(subarr => subarr.slice())
+        let solvedGrid = Array(9).fill([]).map(subar => [0,0,0,0,0,0,0,0,0])
+        gridStateCpy.solvedGrid = solvedGrid.slice().map(subarr => subarr.slice())
+
+        updateGridState(gridStateCpy)
+    }
+
+    function checkInputError(){ //this function checks if two numbers appears more than one time inside a unit and highlight them in red if so
+        
+
     }
 
     return(
         <React.Fragment>
             <Grid gameState={gameState} updateCell={updateCell}/>
-            <Buttons isSolHidden={gameState.isSolHidden} solveGrid={solveGrid} logState={logState}/>
+            <Buttons isSolHidden={gameState.isSolHidden} solveGrid={solveGrid} hideGrid={hideGrid} resetGrid={resetGrid}/>
         </React.Fragment>
     )
 
