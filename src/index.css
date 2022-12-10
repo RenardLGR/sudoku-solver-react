@@ -39,31 +39,6 @@ input:focus {
     outline:none!important;
 }
 
-select {
-    border:0;
-    outline:0;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-    text-align: center;
-}
-
-/* input{
-    height: inherit; 
-    width: inherit;
-} */
-
-/* .cell input {
-    display: inline-block;
-    float: left;
-    width: 40px;
-    height: 40px;
-    border-style: solid;
-    border-width: 1px;
-    text-align: center;
-    font-size: 15px;
-  } */
-
 input {
     border:0;
     outline:0;
@@ -75,4 +50,17 @@ input {
 
 input:focus {
     outline:none!important;
+}
+
+
+.red{
+    background-color: rgba(255, 62, 62, 0.8);
+}
+
+.blue{
+    background-color: rgba(45, 60, 255, 0.8);
+}
+
+.green{
+    background-color: rgba(56, 255, 45, 0.8);
 }

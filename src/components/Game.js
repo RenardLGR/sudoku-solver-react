@@ -70,13 +70,18 @@ function Game() {
             console.log("grid is ok");
             gridStateCpy.isSolHidden = false
             let solvedGrid = solveSudoku(unsolvedGrid)
-
-            console.log(boardColored(unsolvedGrid, solvedGrid, gridStateCpy.isSolHidden));
             gridStateCpy.solvedGrid = solvedGrid.slice().map(subarr => subarr.slice())
+
+            let boardColored = boardColor(unsolvedGrid, solvedGrid, gridStateCpy.isSolHidden)
+            gridStateCpy.colorsGrid = boardColored.slice().map(subarr => subarr.slice())
+            console.log(boardColored);
         }else{ //if board has errors, highlight them
             console.log("grid is wrong");
             let solvedGrid = gridStateCpy.solvedGrid
-            console.log(boardColored(unsolvedGrid, solvedGrid, gridStateCpy.isSolHidden));
+
+            let boardColored = boardColor(unsolvedGrid, solvedGrid, gridStateCpy.isSolHidden)
+            gridStateCpy.colorsGrid = boardColored.slice().map(subarr => subarr.slice())
+            console.log(boardColored);
         }
 
         updateGridState(gridStateCpy)
@@ -102,7 +107,7 @@ function Game() {
 
     return (
         <React.Fragment>
-            <Grid gameState={gameState} updateCell={updateCell} />
+            <Grid gameState={gameState} updateCell={updateCell}/>
             <Buttons isSolHidden={gameState.isSolHidden} solveGrid={solveGrid} hideGrid={hideGrid} resetGrid={resetGrid} />
         </React.Fragment>
     )
@@ -377,7 +382,7 @@ let puzzle1 = [
 
 //coloring board algo :
 
-function boardColored(unsolvedGrid, solvedGrid, isSolHidden) {
+function boardColor(unsolvedGrid, solvedGrid, isSolHidden) {
     // given two boards, return a color board :
     // zeroes are in white
     // 2 identical number inside of a unit are in red

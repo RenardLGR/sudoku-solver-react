@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 
-function Cell({cell, updateCell, isSolHidden}) {
+function Cell({cell, updateCell, isSolHidden, cellColor}) {
     const rowIndx = cell.rowIndx
     const cellIndx = cell.cellIndx
 
@@ -17,7 +17,7 @@ function Cell({cell, updateCell, isSolHidden}) {
 
     return (
         <td className="cell">
-            <input type="text" maxLength="1" value={cell.cellValue} onChange={handleChange} />
+            <input type="text" maxLength="1" value={cell.cellValue} onChange={handleChange} className={cellColor}/>
         </td>
     )
 }
